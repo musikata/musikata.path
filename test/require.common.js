@@ -1,4 +1,4 @@
-var BOWER_DIR = 'bower_componets';
+var BOWER_DIR = 'bower_components';
 
 require.config({
   paths: {
