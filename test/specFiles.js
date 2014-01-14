@@ -3,13 +3,14 @@
 // confusing Karma with missing AMD dependencies.
 
 var specFiles = [
+  'Syllabus.spec.js',
 ];
 
 // Prefix specs with specsDir.
 var specsDir = 'test/specs';
 specFiles.forEach(function(specFile, i){
   specFiles[i] = {
-    pattern: specsDir + specFile,
+    pattern: specsDir + "/" + specFile,
     watched: true,
     included: false
   };

@@ -15,7 +15,6 @@ module.exports = function(config) {
   ];
 
   var configFiles = [
-    {pattern: 'test/karma.conf.js', watched: true, included: false},
     {pattern: 'test/specFiles.js', watched: true, included: false},
     'test/require.common.js',
     'test/test-main.js'
