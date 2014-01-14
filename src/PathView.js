@@ -1,18 +1,32 @@
 define(
-  [
+    [
+    'underscore',
     'marionette',
     'handlebars',
-    'text!./templates/PathView.html'
+    'text!./templates/PathView.html',
+    './StoneTreeView',
 ],
 function(
-  Marionette,
-  Handlerbars,
-  PathViewTemplate
+    _,
+    Marionette,
+    Handlerbars,
+    PathViewTemplate,
+    StoneTreeView
 ){
 
-  var PathView = Marionette.CompositeView.extend({
-    template: Handlebars.compile(PathViewTemplate)
-  });
+    var PathView = Marionette.Layout.extend({
+        template: Handlebars.compile(PathViewTemplate),
 
-  return PathView;
+        regions: {
+            stoneTree: '.stone-tree'
+        },
+
+        onRender: function(){
+            this.stoneTree.show(new StoneTreeView({
+                model: this.model.get('stoneTree')
+            }));
+        }
+    });
+
+    return PathView;
 });
