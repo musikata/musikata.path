@@ -6,6 +6,6 @@ define(
 ],
 function(
 ){
-  var Syllabus = {};
-  return Syllabus;
+  var Path = {};
+  return Path;
 });

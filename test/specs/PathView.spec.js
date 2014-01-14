@@ -1,48 +1,48 @@
 define(
   [
-    'syllabus/SyllabusView',
+    'path/PathView',
     'backbone'
 ],
 function(
-  SyllabusView,
+  PathView,
   Backbone
 ){
-  describe('SyllabusView', function(){
+  describe('PathView', function(){
 
     it('should be defined', function(){
-      expect(SyllabusView).toBeDefined();
+      expect(PathView).toBeDefined();
     });
 
     describe('rendering', function(){
 
-      var syllabusModel;
-      var syllabusView;
+      var pathModel;
+      var pathView;
 
       beforeEach(function(){
-        syllabusModel = new Backbone.Model({
+        pathModel = new Backbone.Model({
           title: 'Llamas 101',
           description: '<p>The description</p>'
         });
-        syllabusView = new SyllabusView({
-          model: syllabusModel
+        pathView = new PathView({
+          model: pathModel
         });
-        syllabusView.render();
+        pathView.render();
       });
 
       afterEach(function(){
-        syllabusView.remove();
+        pathView.remove();
       });
 
       it('should render the title', function(){
-        var $titleEl = syllabusView.$el.find('.title');
+        var $titleEl = pathView.$el.find('.title');
         expect($titleEl.length).toEqual(1);
-        expect($titleEl.eq(0).html()).toContain(syllabusModel.get('title'));
+        expect($titleEl.eq(0).html()).toContain(pathModel.get('title'));
       });
 
       it('should render the description', function(){
-        var $descriptionEl = syllabusView.$el.find('.description');
+        var $descriptionEl = pathView.$el.find('.description');
         expect($descriptionEl.length).toEqual(1);
-        expect($descriptionEl.eq(0).html()).toContain(syllabusModel.get('description'));
+        expect($descriptionEl.eq(0).html()).toContain(pathModel.get('description'));
       });
 
       it('should render the stepping stones', function(){

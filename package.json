@@ -1,21 +1,21 @@
 {
-  "name": "musikata.syllabus",
+  "name": "musikata.path",
   "version": "0.0.0",
-  "description": "Display a course syllabus",
+  "description": "Display a course path",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/musikata/musikata.syllabus.git"
+    "url": "git://github.com/musikata/musikata.path.git"
   },
   "author": "musikata",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/musikata/musikata.syllabus/issues"
+    "url": "https://github.com/musikata/musikata.path/issues"
   },
-  "homepage": "https://github.com/musikata/musikata.syllabus",
+  "homepage": "https://github.com/musikata/musikata.path",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-connect": "~0.6.0",
