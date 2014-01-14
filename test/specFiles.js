@@ -4,6 +4,7 @@
 
 var specFiles = [
   'Syllabus.spec.js',
+  'SyllabusView.spec.js',
 ];
 
 // Prefix specs with specsDir.
