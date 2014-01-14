@@ -11,7 +11,7 @@ require.config({
   },
 
   packages: [
-    {name: 'syllabus', location: 'src'}
+    {name: 'path', location: 'src'}
   ],
 
   shim: {

@@ -1,13 +1,13 @@
 define(
   [
-    'syllabus'
+    'path'
 ],
 function(
-  Syllabus
+  Path
 ){
-  describe('Syllabus', function(){
+  describe('Path', function(){
     it("should be defined", function(){
-      expect(Syllabus).toBeDefined();
+      expect(Path).toBeDefined();
     });
   });
 });
