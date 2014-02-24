@@ -1,18 +1,19 @@
-define(
-    [
-    'marionette',
-    'handlebars',
-    'text!./templates/StoneView.html'
-],
-function(
-    Marionette,
-    Handlebars,
-    StoneViewTemplate
-){
+define(function(require){
+  var Marionete = require('marionette');
+  var Handlebars = require('handlebars');
+  var stoneViewTemplate = require('text!./templates/StoneView.html');
 
-    var StoneView = Marionette.ItemView.extend({
-        template: Handlebars.compile(StoneViewTemplate)
-    });
+  var StoneView = Marionette.ItemView.extend({
+    template: Handlebars.compile(stoneViewTemplate),
 
-    return StoneView;
+    events: {
+      'click': '_onClick'
+    },
+
+    _onClick: function(){
+      this.trigger('click', this.model);
+    }
+  });
+
+  return StoneView;
 });
