@@ -4,6 +4,7 @@
 
 var specFiles = [
   'PathView.spec.js',
+  'StoneView.spec.js',
 ];
 
 // Prefix specs with specsDir.
