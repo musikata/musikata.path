@@ -3,6 +3,7 @@
   "moduleType": [
     "node"
   ],
+  "location": "src",
   "version": "0.0.0",
   "homepage": "https://github.com/musikata/musikata.path",
   "authors": [
