@@ -1,5 +1,5 @@
 define(function(require){
-  var Marionete = require('marionette');
+  var Marionette = require('marionette');
   var Handlebars = require('handlebars');
   var stoneViewTemplate = require('text!./templates/StoneView.html');
 
