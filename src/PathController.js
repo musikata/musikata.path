@@ -18,7 +18,7 @@ define(function(require){
       });
 
       dataDfd.done(function(nodeData){
-        // Issue call to render path node.
+        // Issue render event for path node.
         var renderDfd = new $.Deferred();
         Backbone.trigger('view:render', {
           model: nodeData.nodeModel,
