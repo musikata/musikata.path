@@ -3,6 +3,7 @@
 // confusing Karma with missing AMD dependencies.
 
 var specFiles = [
+  'PathController.spec.js',
   'PathView.spec.js',
   'StoneView.spec.js',
 ];
