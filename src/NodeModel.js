@@ -18,8 +18,10 @@ define(function(require){
     },
 
     getNodeByPath: function(nodePath){
+      if (_.isUndefined(nodePath) || _.isNull(nodePath)){
+        return this;
+      }
       var pathParts = nodePath.split('/');
-      pathParts.shift();
       if (pathParts[0] === ''){
         return this;
       }
