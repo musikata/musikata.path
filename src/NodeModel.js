@@ -18,6 +18,7 @@ define(function(require){
     },
 
     getNodeByPath: function(nodePath){
+    console.log('np', nodePath);
       if (_.isUndefined(nodePath) || _.isNull(nodePath)){
         return this;
       }
@@ -28,7 +29,7 @@ define(function(require){
       else{
         var nextNodeInPath = this.get('children').get(pathParts[0]);
         if (pathParts.length > 1){
-          return nextNodeInPath.getNodeByPath('/' + pathParts.slice(1).join('/'));
+          return nextNodeInPath.getNodeByPath(pathParts.slice(1).join('/'));
         }
         else {
           return nextNodeInPath;
