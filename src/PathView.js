@@ -1,32 +1,20 @@
-define(
-    [
-    'underscore',
-    'marionette',
-    'handlebars',
-    'text!./templates/PathView.html',
-    './StoneTreeView',
-],
-function(
-    _,
-    Marionette,
-    Handlerbars,
-    PathViewTemplate,
-    StoneTreeView
-){
+define(function(require){
+  var Marionette = require('marionette');
+  var Handlerbars = require('handlebars');
+  var PathViewTemplate = require('text!./templates/PathView.html');
 
-    var PathView = Marionette.Layout.extend({
-        template: Handlebars.compile(PathViewTemplate),
+  var PathView = Marionette.CompositeView.extend({
+    template: Handlebars.compile(PathViewTemplate),
+    initialize: function(){
+      this.collection = this.model.get('children');
+    },
+    itemViewContainer: '.nodes',
+    itemView: Marionette.ItemView.extend({
+      tag: 'li',
+      template: Handlebars.compile('{{ id }}')
+    })
 
-        regions: {
-            stoneTree: '.stone-tree'
-        },
+  });
 
-        onRender: function(){
-            this.stoneTree.show(new StoneTreeView({
-                model: this.model.get('stoneTree')
-            }));
-        }
-    });
-
-    return PathView;
+  return PathView;
 });
