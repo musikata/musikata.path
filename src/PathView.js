@@ -24,7 +24,7 @@ define(function(require){
       if (nodeType === 'deck') {
         return Marionette.ItemView.extend({
           tagName: 'li',
-          className: 'node deck-node',
+          className: 'node deck-node ' + item.get('status') ,
           template: Handlebars.compile(DeckNodeViewTemplate),
           templateHelpers: function(){
             return {
