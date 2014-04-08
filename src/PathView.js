@@ -3,7 +3,7 @@ define(function(require){
   var Handlerbars = require('handlebars');
   var PathViewTemplate = require('text!./templates/PathView.html');
   var ScrollNodeViewTemplate = require('text!./templates/ScrollNodeView.html');
-  var ExerciseNodeViewTemplate = require('text!./templates/ExerciseNodeView.html');
+  var DeckNodeViewTemplate = require('text!./templates/DeckNodeView.html');
 
   var PathView = Marionette.CompositeView.extend({
     template: Handlebars.compile(PathViewTemplate),
@@ -21,11 +21,11 @@ define(function(require){
     getItemView: function(item){
       var nodeType = item.get('nodeType');
 
-      if (nodeType === 'exercise') {
+      if (nodeType === 'deck') {
         return Marionette.ItemView.extend({
           tagName: 'li',
-          className: 'node exercise-node',
-          template: Handlebars.compile(ExerciseNodeViewTemplate),
+          className: 'node deck-node',
+          template: Handlebars.compile(DeckNodeViewTemplate),
           templateHelpers: function(){
             return {
               url: window.location.href.replace(/\/$/, '') + '/' + this.model.id
