@@ -18,7 +18,6 @@ define(function(require){
     },
 
     getNodeByPath: function(nodePath){
-    console.log('np', nodePath);
       if (_.isUndefined(nodePath) || _.isNull(nodePath)){
         return this;
       }
@@ -28,6 +27,9 @@ define(function(require){
       }
       else{
         var nextNodeInPath = this.get('children').get(pathParts[0]);
+        if (! nextNodeInPath){
+          return undefined;
+        }
         if (pathParts.length > 1){
           return nextNodeInPath.getNodeByPath(pathParts.slice(1).join('/'));
         }
@@ -35,7 +37,38 @@ define(function(require){
           return nextNodeInPath;
         }
       }
-    }
+    },
+    
+    createNodeAtPath: function(nodePath, nodeData){
+      var pathParts = nodePath.split('/');
+      if (pathParts[0] === ''){
+        pathParts.shift();
+      }
+
+      // Get or create ancestor nodes.
+      var currentNode = this;
+      var currentChildren = currentNode.get('children');
+      for (var i=0; i < pathParts.length - 1; i++){
+        var pathPart = pathParts[i];
+        var nextNode = currentChildren.get(pathPart);
+        // Create next node if it does not exist yet.
+        if (! nextNode) {
+          nextNode = new NodeModel({
+            id: pathPart
+          });
+          currentChildren.add(nextNode);
+        }
+        currentNode = nextNode;
+        currentChildren = currentNode.get('children');
+      };
+      // Create target node.
+      var newNode = new NodeModel(_.extend({
+        id: pathParts[pathParts.length -1]
+      }, nodeData));
+      currentChildren.add(newNode);
+      return newNode;
+    },
+
 
   });
 

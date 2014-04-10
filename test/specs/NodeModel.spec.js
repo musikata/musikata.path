@@ -45,8 +45,8 @@ define(function(require){
       });
     });
 
-    describe('getNodeByNodePath', function(){
-      iit('should get node by path', function(){
+    describe('getNodeByPath', function(){
+      it('should get node by path', function(){
         var tree = {
           id: 'A',
           children: [
@@ -60,9 +60,33 @@ define(function(require){
         };
         var nodeModel = new NodeModel(tree);
 
-        expect(nodeModel.getNodeByPath('/').get('id')).toBe('A');
-        expect(nodeModel.getNodeByPath('/A.A').get('id')).toBe('A.A');
-        expect(nodeModel.getNodeByPath('/A.A/A.A.A').get('id')).toBe('A.A.A');
+        expect(nodeModel.getNodeByPath('').get('id')).toBe('A');
+        expect(nodeModel.getNodeByPath('A.A').get('id')).toBe('A.A');
+        expect(nodeModel.getNodeByPath('A.A/A.A.A').get('id')).toBe('A.A.A');
+      });
+    });
+
+    describe('createNodeAtPath', function(){
+      it('should create node at a path, and ancestors', function(){
+        var tree = {
+          id: 'A',
+          children: [
+            {
+              id: 'A.A',
+              children: [
+                {id: 'A.A.A'},
+              ]
+            },
+          ]
+        };
+        var nodeModel = new NodeModel(tree);
+
+        var newNode = nodeModel.createNodeAtPath('A.B/A.B.A', {
+          foo: 'bar'
+        });
+
+        expect(nodeModel.getNodeByPath('A.B').get('id')).toBe('A.B');
+        expect(nodeModel.getNodeByPath('A.B/A.B.A').get('id')).toBe('A.B.A');
       });
     });
 
