@@ -90,5 +90,27 @@ define(function(require){
       });
     });
 
+    describe('visitNodes', function(){
+      it('should visit nodes', function(){
+        var tree = {
+          id: 'A',
+          children: [
+            {
+              id: 'A.A',
+              children: [
+                {id: 'A.A.A'},
+              ]
+            },
+          ]
+        };
+        var nodeModel = new NodeModel(tree);
+        var visitationLog = [];
+        nodeModel.visitNodes(function(nodePath, node){
+          visitationLog.push(nodePath);
+        });
+        expect(visitationLog).toEqual(['', 'A.A', 'A.A/A.A.A']);
+      });
+    });
+
   });
 });

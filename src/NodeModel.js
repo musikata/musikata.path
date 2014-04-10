@@ -69,6 +69,14 @@ define(function(require){
       return newNode;
     },
 
+    visitNodes: function(visitor, pathParts){
+      pathParts = pathParts || [];
+      visitor(pathParts.join('/'), this);
+      _.each(this.get('children').models, function(childNode){
+        childNode.visitNodes(visitor, pathParts.concat(childNode.id));
+      });
+    }
+
 
   });
 
