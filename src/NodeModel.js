@@ -17,11 +17,11 @@ define(function(require){
       }
     },
 
-    getNodeByPath: function(nodePath){
-      if (_.isUndefined(nodePath) || _.isNull(nodePath)){
+    getNodeByXPath: function(nodeXPath){
+      if (_.isUndefined(nodeXPath) || _.isNull(nodeXPath)){
         return this;
       }
-      var pathParts = nodePath.split('/');
+      var pathParts = nodeXPath.split('/');
       if (pathParts[0] === ''){
         return this;
       }
@@ -31,7 +31,7 @@ define(function(require){
           return undefined;
         }
         if (pathParts.length > 1){
-          return nextNodeInPath.getNodeByPath(pathParts.slice(1).join('/'));
+          return nextNodeInPath.getNodeByXPath(pathParts.slice(1).join('/'));
         }
         else {
           return nextNodeInPath;
@@ -39,8 +39,8 @@ define(function(require){
       }
     },
     
-    createNodeAtPath: function(nodePath, nodeData){
-      var pathParts = nodePath.split('/');
+    createNodeAtXPath: function(nodeXPath, nodeData){
+      var pathParts = nodeXPath.split('/');
       if (pathParts[0] === ''){
         pathParts.shift();
       }
