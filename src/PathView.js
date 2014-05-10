@@ -21,27 +21,23 @@ define(function(require){
     getItemView: function(item){
       var nodeType = item.get('nodeType');
 
+      var xPathParts = item.get('xPath').split('/');
+      var relXPath = xPathParts[xPathParts.length - 1];
+      var url = window.location.href.replace(/\/$/, '') + '/' + relXPath;
+
       if (nodeType === 'deck') {
         return Marionette.ItemView.extend({
           tagName: 'li',
           className: 'node deck-node ' + item.get('status') ,
           template: Handlebars.compile(DeckNodeViewTemplate),
-          templateHelpers: function(){
-            return {
-              url: window.location.href.replace(/\/$/, '') + '/' + this.model.id
-            }
-          }
+          templateHelpers: { url: url }
         });
       } else if (nodeType === 'scroll') {
         return Marionette.ItemView.extend({
           tagName: 'li',
           className: 'node scroll-node',
           template: Handlebars.compile(ScrollNodeViewTemplate),
-          templateHelpers: function(){
-            return {
-              url: window.location.href.replace(/\/$/, '') + '/' + this.model.id
-            }
-          }
+          templateHelpers: { url: url }
         });
       }
     }

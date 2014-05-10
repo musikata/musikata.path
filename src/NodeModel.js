@@ -26,7 +26,7 @@ define(function(require){
         return this;
       }
       else{
-        var nextNodeInPath = this.get('children').get(pathParts[0]);
+        var nextNodeInPath = this.get('children').at(pathParts[0]);
         if (! nextNodeInPath){
           return undefined;
         }
